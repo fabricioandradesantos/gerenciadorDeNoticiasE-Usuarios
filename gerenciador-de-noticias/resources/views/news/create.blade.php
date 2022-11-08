@@ -4,8 +4,12 @@
 
 <div id="new-create-container" class="col-md-6 offset-md-3">
     <h1> Crie uma notícia</h1>
-    <form action="/news" method="POST">
+    <form action="/news" method="POST" enctype="multipart/form-data">
         @csrf
+        <div class="form-group">
+            <label for="image">Imagem para capa:</label>
+            <input type="file" id="image" name="image" class="from-control-file">
+        </div>
         <div class="form-group">
             <label for="title">Notícia:</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Titulo da notícia">
