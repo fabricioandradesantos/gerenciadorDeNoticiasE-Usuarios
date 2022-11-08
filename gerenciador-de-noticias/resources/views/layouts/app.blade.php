@@ -28,7 +28,13 @@
                     @include('layouts.navbars.navbar')
 
                     <div class="content">
-                        @yield('content')
+                           
+
+                                @if(session('msg'))
+                                    <p class="msg"> {{ session('msg')}} </p>
+                                @endif
+                                @yield('content')
+                            
                     </div>
 
                     @include('layouts.footer')
@@ -43,7 +49,13 @@
                 <div class="full-page {{ $contentClass ?? '' }}">
                     <div class="content">
                         <div class="container">
-                            @yield('content')
+                        
+
+                                @if(session('msg'))
+                                    <p class="msg"> {{ session('msg')}} </p>
+                                @endif
+                                @yield('content')
+                   
                         </div>
                     </div>
                     @include('layouts.footer')
