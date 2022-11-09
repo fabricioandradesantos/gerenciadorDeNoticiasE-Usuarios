@@ -11,9 +11,19 @@ class NewsController extends Controller
 
     public function index(){
 
-        $news = News::all();
+        $search = request('search');
+
+        if($search){
+
+            $news = News::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+
+        }else{
+            $news = News::all();
+        }
         
-        return view('dashboard', ['news' => $news]);
+        return view('dashboard', ['news' => $news, 'search' => $search]);
     }
 
     public function create(){
