@@ -14,7 +14,7 @@
     <div id="cards-container" class="row">
         @foreach($news as $new)
         <div class="card col-md-3">
-            <a href="/news/{$id}" class="btn btn-primary"> Visualizar</a>
+            <a href="/news/{{ $new->id }}" class="btn btn-primary"> Visualizar</a>
             <img src="/img/news/{{ $new->image }}" alt="{{ $new->title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ $new->title }}</h5>

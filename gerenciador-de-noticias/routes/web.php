@@ -48,4 +48,5 @@ Route::group(['middleware' => 'auth'], function () {
 	//Route::get('/dashboard', [NewsController::class, 'index']);
 	Route::get('/news/create', [NewsController::class, 'create']);
 	Route::post('/news', [NewsController::class, 'store']);
+	Route::get('/news/{id}', [NewsController::class, 'show']);
 });

@@ -17995,8 +17995,50 @@ Copyright (c) 2015 Daniel Eden
   font-weight: bold;
   margin-bottom: 30px;
 }
-
 /* fim do lista news */
+
+/* Pagina da noticia */
+#image-container,
+#info-container {
+  margin-top: 30px;
+}
+
+#image-container img {
+  border-radius: 10px;
+  width:1000px;
+  max-height:450px;
+}
+
+#info-container h1 {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+#info-container p {
+  margin: 0;
+  font-size: 14px;
+  display: flex;
+}
+
+#info-container h3,
+#description-container h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#info-container ion-icon {
+  font-size: 20px;
+  color: #F2A340;
+  margin-right: 5px;
+}
+
+#new-text{
+  text-align: center;
+}
+
+
+/* Fim da Pagina da noticia */
+
 
 
 

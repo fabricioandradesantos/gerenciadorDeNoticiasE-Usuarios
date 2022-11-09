@@ -48,4 +48,12 @@ class NewsController extends Controller
 
         return redirect('/home')->with('msg', 'Notícia criada com sucesso!');
     }
+
+
+    public function show($id){
+        $new = News::findOrFail($id);
+        return view('news.show', ['new' => $new]);
+    }
+
+
 }
