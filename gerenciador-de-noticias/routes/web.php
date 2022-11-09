@@ -41,13 +41,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
-//rota de noticia
+//rotas de noticias
 Route::group(['middleware' => 'auth'], function () {
 	//Route::get('/dashboard', [NewsController::class, 'index']);
 	Route::get('/home', [NewsController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/news/create', [NewsController::class, 'create']);
 	Route::post('/news', [NewsController::class, 'store']);
 	Route::get('/news/{id}', [NewsController::class, 'show']);
-	Route::delete('/news/{id}', [NewsController::class, 'destroy']);
+	Route::delete('/news/{id}', [NewsController::class, 'destroy'])->middleware('auth');
+	Route::get('/news/edit/{id}', [NewsController::class, 'edit' ])->middleware('auth');
+	Route::put('/news/update/{id}', [NewsController::class, 'update'])->middleware('auth');
 });
 

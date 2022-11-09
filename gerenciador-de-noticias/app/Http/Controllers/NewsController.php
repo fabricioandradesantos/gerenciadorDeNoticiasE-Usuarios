@@ -81,5 +81,38 @@ class NewsController extends Controller
         return redirect('/home')->with('msg', 'Notícia excluída com sucesso!');
     }
 
+    public function edit($id){
+        $new = News::findOrFail($id);
+
+        return view('news.edit', ['new' => $new]);
+
+    }
+
+    public function update(Request $request){
+        
+        $data = $request->all();
+
+        //upload de imagem
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now") . "." . $extension );
+
+            
+            $requestImage->move(public_path('img/news'), $imageName);  
+            
+            $data['image'] = $imageName;
+        }
+
+        
+
+        News::findOrFail($request->id)->update($data);
+
+        return redirect('/home')->with('msg', 'Notícia editada com sucesso!');
+
+    }
+
 
 }

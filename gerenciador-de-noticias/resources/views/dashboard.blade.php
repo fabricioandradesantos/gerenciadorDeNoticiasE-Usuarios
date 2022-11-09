@@ -26,16 +26,15 @@
                 <h6 class="card-description">{{ $new->description }}</h6>
             </div>
             
-            
-            <form action="/news/{{ $new->id}}" method="POST" class="news-form-crud"> 
+            <a href="/news/edit/{{ $new->id }}" class="btn btn-info edit-btn"> Editar </a>
 
-            
+            <form action="/news/{{ $new->id}}" method="POST" > 
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger delete-btn">
                     Deletar
                 </button>
-                <a href="/news/{{ $new->id }}" class="btn btn-primary"> Editar </a>
+                
             </form>
         </div>
         @endforeach

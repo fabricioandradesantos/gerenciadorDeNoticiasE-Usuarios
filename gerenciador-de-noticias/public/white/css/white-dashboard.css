@@ -18046,10 +18046,15 @@ Copyright (c) 2015 Daniel Eden
 #new-text{
   text-align: center;
 }
-
-
 /* Fim da Pagina da noticia */
 
+
+/* Editar noticia */
+
+.img-preview{
+  width: 100px;
+  margin-top: 20px;
+}
 
 
 
