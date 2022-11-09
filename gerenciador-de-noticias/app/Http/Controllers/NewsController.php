@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\News;
+use App\Models\User;
 
 class NewsController extends Controller
 {
@@ -15,12 +16,19 @@ class NewsController extends Controller
 
         if($search){
 
+            $user = auth()->user();
+
+            //retorna a noticia buscada se existir e pertencer ao usuario logado
+            //usei a doc pra saber usar where composto
             $news = News::where([
                 ['title', 'like', '%'.$search.'%']
-            ])->get();
-
+            ])
+            ->where('user_id', $user->id)
+            ->get();
+           
         }else{
-            $news = News::all();
+            $user = auth()->user();
+            $news = $user->news;
         }
         
         return view('dashboard', ['news' => $news, 'search' => $search]);
@@ -52,6 +60,9 @@ class NewsController extends Controller
             
             $new->image = $imageName;
         }
+
+        $user = auth()->user();
+        $new->user_id = $user->id;
 
 
         $new->save();

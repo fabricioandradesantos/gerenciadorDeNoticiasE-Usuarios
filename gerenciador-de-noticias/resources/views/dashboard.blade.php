@@ -30,7 +30,7 @@
         @if(count($news) == 0 && $search)
             <p>Não foi possível encontrar uma noticia sobre {{ $search}} <a href="/home">Ver todas</a></p>
         @elseif(count($news) == 0)
-            <p>Não há notícias cadastradas</p>
+            <p>Não há notícias cadastradas <a href="/news/create">Criar uma Notícia</a></p>
         @endif
     </div>
 </div>

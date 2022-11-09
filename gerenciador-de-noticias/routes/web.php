@@ -24,8 +24,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/home', [NewsController::class, 'index'])->name('home')->middleware('auth');
-
 Route::group(['middleware' => 'auth'], function () {
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
@@ -46,7 +44,9 @@ Route::group(['middleware' => 'auth'], function () {
 //rota de noticia
 Route::group(['middleware' => 'auth'], function () {
 	//Route::get('/dashboard', [NewsController::class, 'index']);
+	Route::get('/home', [NewsController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/news/create', [NewsController::class, 'create']);
 	Route::post('/news', [NewsController::class, 'store']);
 	Route::get('/news/{id}', [NewsController::class, 'show']);
 });
+
