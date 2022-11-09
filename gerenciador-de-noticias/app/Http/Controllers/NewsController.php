@@ -76,5 +76,10 @@ class NewsController extends Controller
         return view('news.show', ['new' => $new]);
     }
 
+    public function destroy($id){
+        News::findOrFail($id)->delete();
+        return redirect('/home')->with('msg', 'Notícia excluída com sucesso!');
+    }
+
 
 }

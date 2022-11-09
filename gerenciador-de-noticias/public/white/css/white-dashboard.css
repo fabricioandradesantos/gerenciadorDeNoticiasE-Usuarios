@@ -17995,6 +17995,17 @@ Copyright (c) 2015 Daniel Eden
   font-weight: bold;
   margin-bottom: 30px;
 }
+
+.msg {
+  background-color: #D4EDDA;
+  color: #155724;
+  border: 1px solid #C3E6CB;
+  width: 100%;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 10px;
+}
+
 /* fim do lista news */
 
 /* Pagina da noticia */

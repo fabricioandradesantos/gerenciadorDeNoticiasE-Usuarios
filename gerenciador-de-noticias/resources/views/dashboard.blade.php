@@ -25,6 +25,18 @@
                 <h5 class="card-title">{{ $new->title }}</h5>
                 <h6 class="card-description">{{ $new->description }}</h6>
             </div>
+            
+            
+            <form action="/news/{{ $new->id}}" method="POST" class="news-form-crud"> 
+
+            
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger delete-btn">
+                    Deletar
+                </button>
+                <a href="/news/{{ $new->id }}" class="btn btn-primary"> Editar </a>
+            </form>
         </div>
         @endforeach
         @if(count($news) == 0 && $search)
