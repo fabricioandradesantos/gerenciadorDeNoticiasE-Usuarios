@@ -43,25 +43,23 @@ Route::group(['middleware' => 'auth'], function () {
 	
 });
 
-
+//rotas que já estavam sendo usadas no user
+Route::get('/profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
+Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+Route::get('/index', [UserController::class, 'index']);
 
 //Rotas do CRUD de users	
 Route::group(['middleware' => 'auth'], function () {
-	
-	Route::get('/index', [UserController::class, 'index']);
 	Route::get('/profile/{id}', ['as' => 'profile.show', 'uses' => 'App\Http\Controllers\ProfileController@show']);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+	Route::get('/profile/edited/{id}', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edited']);
+	Route::put('profile/update/{id}', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@up']);
 	Route::delete('profile/{id}', ['as' => 'destroy', 'uses' => 'App\Http\Controllers\ProfileController@destroy']);
 	Route::get('/index', ['as' => 'index', 'uses' => 'App\Http\Controllers\ProfileController@index']);
 
 });
 
-
-
-//rotas de noticias
+//rotas do CRUD de noticias
 Route::group(['middleware' => 'auth'], function () {
-	//Route::get('/dashboard', [NewsController::class, 'index']);
 	Route::get('/home', [NewsController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/news/create', [NewsController::class, 'create']);
 	Route::post('/news', [NewsController::class, 'store']);

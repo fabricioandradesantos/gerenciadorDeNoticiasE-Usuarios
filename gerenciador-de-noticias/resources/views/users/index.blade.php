@@ -273,7 +273,7 @@
                                         <a href="/profile/{{ $user->id}}" class="btn btn-view-users"> Ver</a>
                                     </td>
                                     <td>
-                                        <a href="/profile" class="btn btn-edit-users col"> Editar </a>
+                                        <a href="/profile/edited/{{ $user->id }}" class="btn btn-edit-users col"> Editar </a>
                                     </td>
                                     <td>
                                         <form action="/profile/{{ $user->id}}" method="POST" >
