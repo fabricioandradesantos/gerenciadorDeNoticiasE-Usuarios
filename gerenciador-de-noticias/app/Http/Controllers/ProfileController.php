@@ -28,7 +28,8 @@ class ProfileController extends Controller
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        //return back()->withStatus(__('Usuário atualizado com sucesso!'));
+        return redirect('/index')->with('msg', 'Usuário atualizado com sucesso!');
     }
 
     /**
