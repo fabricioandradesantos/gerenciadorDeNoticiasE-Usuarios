@@ -11,8 +11,17 @@ class News extends Model
 
     protected $guarded = [];
 
+    public function index(News $news)
+    {
+        return view('dashboard', ['news' => $news->paginate(2)]);
+    }
+    
+    
     public function user(){
         return $this->belongsTo('App\Models\News');
     }
+
+
+
 
 }

@@ -1833,7 +1833,7 @@ pre code {
 }
 
 .form-control {
-  display: block;
+  display: inline-block;
   width: 100%;
   height: calc(2.25rem + 2px);
   padding: 0.5rem 0.7rem;
@@ -2482,6 +2482,11 @@ fieldset:disabled a.btn {
   background-color: #1d8cf8;
   border-color: #1d8cf8;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.btn-info-news{
+  background-color: #24f81d;
+  border-color: #24f81d;
 }
 
 .btn-info:hover {
@@ -16406,18 +16411,12 @@ textarea.form-control {
   max-height: 80px;
   padding: 10px 10px 0 0;
   resize: none;
-  border: none;
   border-bottom: 1px solid #2b3553;
-  border-radius: 0;
+  border-radius: 0.4285rem;
   line-height: 2;
 }
 
-textarea.form-control:focus,
-textarea.form-control:active {
-  border-left: none;
-  border-top: none;
-  border-right: none;
-}
+
 
 .has-success.form-group .form-control,
 .has-success.form-group.no-border .form-control,
@@ -17959,7 +17958,7 @@ Copyright (c) 2015 Daniel Eden
 
 /* inicia lista news*/
 #news-container {
-  padding: 50px;
+  padding: 20px;
 }
 
 #news-container h2 {
@@ -17976,8 +17975,8 @@ Copyright (c) 2015 Daniel Eden
 }
 
 #news-container .card {
-  flex: 1 1 24%;
-  max-width: 25%;
+  flex: 1 1 29%;
+  max-width: 33%;
   border-radius: 10px;
   padding: 0;
   margin: .5%;
@@ -17985,6 +17984,7 @@ Copyright (c) 2015 Daniel Eden
 
 #news-container img {
   max-height: 150px;
+  min-height: 150px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -18056,7 +18056,42 @@ Copyright (c) 2015 Daniel Eden
   margin-top: 20px;
 }
 
+/* fim Editar noticia */
 
+.btn-view-news{
+  background: #0098f0;
+  background-color: #0098f0;
+  width: 100%;
+}
+
+.btn-edit-news{
+  background: #27AE60;
+  background-color: #27AE60;
+}
+
+.btn-create-news{
+  background: green;
+  background-color: green;
+}
+
+.table-news{
+   width:100%;
+}
+
+.th-news {
+  
+    vertical-align: middle;
+    display: inline-flex;
+    width:100%;
+}
+
+.th-news-search {
+  
+  vertical-align: middle;
+  display: inline-table;
+  margin-top: 10px;
+  width:100%;
+}
 
 
 /*# sourceMappingURL=dashboard-free.css.map */

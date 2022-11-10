@@ -18,8 +18,8 @@
             <label for="description">Descrição:</label>
             <textarea class="form-control" name="description" id="description" placeholder="Conteúdo da notícia..." ></textarea>
         </div>
-        <input type="submit" class="btn btn-primary col-md-12" value="Criar Notícia" > 
-        <a href="/home" class="btn btn-primary ">Voltar</a>
+        <input type="submit" class="btn btn-create-news col-md-12" value="Criar Notícia" > 
+        <a href="/home" class="btn btn-primary col-md-12">Voltar</a>
     </form>   
     
 </div>

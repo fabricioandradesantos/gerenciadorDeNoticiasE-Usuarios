@@ -9,8 +9,12 @@
         @method('PUT')
         <div class="form-group">
             <label for="image">Nova imagem para capa:</label>
-            <input type="file" id="image" name="image" class="from-control-file">
+            <input type="file" id="image" name="image" class="from-control-file"> 
+            <br><br>
+            <h8>Imagem atual</h8>
             <img src="/img/news/{{ $new->image }}" alt="{{ $new->title }}" class="img-preview">
+            
+            
         </div>
         <div class="form-group">
             <label for="title">Notícia:</label>
@@ -20,8 +24,8 @@
             <label for="description">Descrição:</label>
             <textarea class="form-control" name="description" id="description" placeholder="Conteúdo da notícia..." > {{ $new->description}}</textarea>
         </div>
-        <input type="submit" class="btn btn-primary col-md-12" value="Editar Notícia" > 
-        <a href="/home" class="btn btn-primary ">Voltar</a>
+        <input type="submit" class="btn btn-create-news col-md-12" value="Editar Notícia" > 
+        <a href="/home" class="btn btn-primary col-md-12">Voltar</a>
     </form>   
     
 </div>

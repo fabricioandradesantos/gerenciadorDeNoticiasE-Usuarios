@@ -2,14 +2,20 @@
 
 @section('content')
 
+<a href="/news/create" class="btn btn-create-news col-md-12"> Criar Notícia </a> 
 
-<div id="search-container" class="col-md-6">
-    <h1>Busque uma notícia</h1>
-    <form action="/home" method="GET">
-        <input type="text" id="search" name="search" class="form-control" placeholder="Busca...">
-        
-        <input type="submit" class="btn btn-primary col" value="Buscar">
-    </form>
+<div id="search-container" class="col-md-12">
+
+        <table class="table-news">
+                <tr>
+                    <th class="th-news-search">
+                        <form action="/home" method="GET">
+                            <input type="text" id="search" name="search" class="form-control" placeholder="Buscar uma notícia...">
+                            <input type="submit" class="btn btn-primary col" value="Buscar">
+                        </form>
+                    </th>
+                </tr>
+        </table>  
 </div>
 
 <div id="news-container" class="col-md-12">
@@ -19,23 +25,30 @@
     <div id="cards-container" class="row">
         @foreach($news as $new)
         <div class="card col-md-3">
-            <a href="/news/{{ $new->id }}" class="btn btn-primary"> Visualizar</a>
+            
             <img src="/img/news/{{ $new->image }}" alt="{{ $new->title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ $new->title }}</h5>
-                <h6 class="card-description">{{ $new->description }}</h6>
-            </div>
-            
-            <a href="/news/edit/{{ $new->id }}" class="btn btn-info edit-btn"> Editar </a>
-
-            <form action="/news/{{ $new->id}}" method="POST" > 
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger delete-btn">
-                    Deletar
-                </button>
                 
-            </form>
+                <a href="/news/{{ $new->id }}" class="btn btn-view-news"> Visualizar</a>
+                <table class="table-news" >
+                <tr>
+                    <th class="th-news">
+                    
+                        <a href="/news/edit/{{ $new->id }}" class="btn btn-edit-news col"> Editar </a>
+                        <form action="/news/{{ $new->id}}" method="POST" > 
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger delete-btn">
+                                Deletar
+                            </button>
+                        </form>
+                    </th>
+                    
+                </tr>
+            </table>
+
+            </div>
         </div>
         @endforeach
         @if(count($news) == 0 && $search)
