@@ -279,18 +279,24 @@
                             </tbody>
                             @endforeach
                     </table>
+                    
                 </div>
-
+                
+                    
             </div>
-
-
-
     </div>
+             <div>
+                    {{ $users->appends([
+                        'search' => request()->get('search', '')
+                    ])->links() }}
+            </div>
+            
 </div>
                 </div>
-
-
+                
+                
             </div>
+            
         </div>
     <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
             @csrf
