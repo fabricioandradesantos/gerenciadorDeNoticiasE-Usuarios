@@ -224,9 +224,7 @@
         <div class="card ">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-8">
-                        <p class="card-title">Usuários</p>
-                    </div>
+                    
                     <div id="search-container" class="col-md-12">
 
                             <table class="table-news">
@@ -293,6 +291,12 @@
 
                             </tbody>
                             @endforeach
+
+                            @if(count($users) == 0 && $search)
+                                <p>Não foi possível encontrar um usuário com o nome '{{ $search}}' <a href="/user">Ver todos</a></p>
+                            @elseif(count($users) == 0)
+                                <p>Não há usuários cadastradas <a href="#">Criar um usuário</a></p>
+                            @endif
                     </table>
                     
                 </div>

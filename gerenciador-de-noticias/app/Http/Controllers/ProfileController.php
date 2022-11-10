@@ -64,6 +64,8 @@ class ProfileController extends Controller
                 ['name', 'like', '%'.$search.'%']
             ])->paginate(3);
            
+        }else {
+            $users = auth()->user();
         }
 
         return view('users.index', ['users' => $users, 'search' => $search]);
