@@ -53,12 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::delete('profile/{id}', ['as' => 'destroy', 'uses' => 'App\Http\Controllers\ProfileController@destroy']);
-	
-	//Route::post('/news', [NewsController::class, 'store']);
-	//Route::get('/news/{id}', [NewsController::class, 'show']);
-		//Route::delete('/news/{id}', [NewsController::class, 'destroy'])->middleware('auth');
-	//Route::get('/news/edit/{id}', [NewsController::class, 'edit' ])->middleware('auth');
-	//Route::put('/news/update/{id}', [NewsController::class, 'update'])->middleware('auth');
+	Route::get('/index', ['as' => 'index', 'uses' => 'App\Http\Controllers\ProfileController@index']);
+
 });
 
 

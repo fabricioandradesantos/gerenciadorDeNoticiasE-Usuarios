@@ -225,11 +225,26 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-title">Usuários</h4>
+                        <p class="card-title">Usuários</p>
                     </div>
+                    <div id="search-container" class="col-md-12">
+
+                            <table class="table-news">
+                                    <tr>
+                                        <th class="th-news-search">
+                                            <form action="/index" method="GET">
+                                                <input type="text" id="search" name="search" class="form-control" placeholder="Buscar usuário pelo nome...">
+                                                <input type="submit" class="btn btn-primary col" value="Buscar">
+                                            </form>
+                                        </th>
+                                    </tr>
+                            </table>  
+                    </div>
+
                     <div class="col-4 text-right">
                         <a href="" class="btn btn-sm btn-primary">Adicionar Usuário</a>
                     </div>
+
                 </div>
             </div>
             <div class="card-body">

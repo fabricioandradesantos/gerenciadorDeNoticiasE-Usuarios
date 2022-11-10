@@ -56,5 +56,18 @@ class ProfileController extends Controller
         return view('profile.show', ['user' => $user]);
     }
 
+    public function index(){
+        $search = request('search');
+
+        if($search){
+            $users = User::where([
+                ['name', 'like', '%'.$search.'%']
+            ])->paginate(3);
+           
+        }
+
+        return view('users.index', ['users' => $users, 'search' => $search]);
+    }
+
 
 }
