@@ -24,7 +24,7 @@ class ProfileController extends Controller
         
         $user = User::findOrFail($id);
 
-        return view('profile.edit', ['user' => $user]);
+        return view('profile.edited', ['user' => $user]);
 
     }
 
