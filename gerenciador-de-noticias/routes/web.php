@@ -45,14 +45,15 @@ Route::group(['middleware' => 'auth'], function () {
 
 //Rotas do CRUD de users	
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/index', [UserController::class, 'index']);
 	Route::get('/profile/{id}', ['as' => 'profile.show', 'uses' => 'App\Http\Controllers\ProfileController@show']);
 	Route::get('/profile/edited/{id}', ['as' => 'profile.edited', 'uses' => 'App\Http\Controllers\ProfileController@edited']);
 	Route::put('profile/update/{id}', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@up']);
 	Route::delete('profile/{id}', ['as' => 'destroy', 'uses' => 'App\Http\Controllers\ProfileController@destroy']);
-	Route::get('/index', ['as' => 'index', 'uses' => 'App\Http\Controllers\ProfileController@index']);
+	Route::get('/index', ['as' => 'users.index', 'uses' => 'App\Http\Controllers\ProfileController@index']);
 	Route::get('/profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	Route::get('/index', [UserController::class, 'index']);
+	
 });
 
 //rotas do CRUD de noticias
