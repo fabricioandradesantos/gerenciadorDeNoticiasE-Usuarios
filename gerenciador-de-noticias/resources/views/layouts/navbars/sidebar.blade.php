@@ -29,7 +29,7 @@
                         <li @if ($pageSlug == 'users') class="active " @endif>
                             <a href="{{ route('user.index')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ __('User Management') }}</p>
+                                <p>{{ __('Gerenciar usuários') }}</p>
                             </a>
                         </li>
                     </ul>
