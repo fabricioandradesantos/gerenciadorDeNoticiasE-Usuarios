@@ -18093,5 +18093,41 @@ Copyright (c) 2015 Daniel Eden
   width:100%;
 }
 
+/* users */
+
+.td-users {
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+.td-users {
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+.btn-view-users{
+  background: #0098f0;
+  background-color: #0098f0;
+  width: 100%;
+}
+
+.btn-edit-users{
+  background: #27AE60;
+  background-color: #27AE60;
+  width: 100%;
+}
+
+.btn-create-users{
+  background: green;
+  background-color: green;
+  
+}
+
+.td-user-width{
+  max-width: 200px;
+}
+
+
+
 
 /*# sourceMappingURL=dashboard-free.css.map */

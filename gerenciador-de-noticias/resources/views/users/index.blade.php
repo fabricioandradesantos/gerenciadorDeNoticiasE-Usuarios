@@ -120,7 +120,7 @@
                                         <span class="nav-link-text" >{{ ('Meu Perfil') }}</span>
                                         <b class="caret mt-1"></b>
                                     </a>
-                    
+
                                     <div class="collapse show" id="laravel-examples">
                                         <ul class="nav pl-4">
                                             <li >
@@ -138,12 +138,12 @@
                                         </ul>
                                     </div>
                                 </li>
-                               
-                               
+
+
                             </ul>
                         </div>
                     </div>
-                    
+
             <div class="main-panel">
                 <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
                     <div class="container-fluid">
@@ -164,7 +164,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navigation">
                             <ul class="navbar-nav ml-auto">
-                                
+
                                 <li class="dropdown nav-item">
                                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                         <div class="photo">
@@ -203,7 +203,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -223,96 +223,112 @@
     <div class="col-md-12">
         <div class="card ">
             <div class="card-header">
+                @can('user')
+                            <p>Ops! : (  <br> Você precisa ser um administrador para ver outros usuários  </p>
+                @elsecan('admin')
                 <div class="row">
-                    <div class="col-8">
-                        <h4 class="card-title">Users</h4>
+                
+
+                    <div id="search-container" class="col-md-12">
+
+                            <table class="table-news">
+                                    <tr>
+                                        <th class="th-news-search">
+                                            <form action="/index" method="GET">
+                                                <input type="text" id="search" name="search" class="form-control" placeholder="Buscar usuário pelo nome...">
+                                                <input type="submit" class="btn btn-primary col" value="Buscar">
+                                            </form>
+                                        </th>
+                                    </tr>
+                            </table>  
                     </div>
-                    <div class="col-4 text-right">
-                        <a href="#" class="btn btn-sm btn-primary">Add user</a>
-                    </div>
+
+                    
+
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="">
                     <table class="table tablesorter " id="">
                         <thead class=" text-primary">
-                            <tr><th scope="col">Name</th>
+                            <tr><th scope="col">Nome</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Creation Date</th>
+                            <th scope="col">Data</th>
                             <th scope="col"></th>
                         </tr></thead>
-                        <tbody>
-                                                                <tr>
-                                    <td>Admin Admin</td>
-                                    <td>
-                                        <a href="mailto:admin@white.com">admin@white.com</a>
+
+                        
+
+@foreach ($users as $user)
+
+        @if($user->email != 'admin@white.com')
+      <tbody>
+
+        <tr>
+            <td class="td-user-width">{{$user->name}}
+
+            </td>
+            <td class="td-user-width">
+                {{$user->email}}
+            </td>
+                                    <td class="td-user-width">
+                                        25/02/2020 09:11
                                     </td>
-                                    <td>25/02/2020 09:11</td>
-                                    <td class="text-right">
-                                                                                        <div class="dropdown">
-                                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                                                                <a class="dropdown-item" href="#">Edit</a>
-                                                                                                        </div>
-                                            </div>
-                                                                                </td>
+
+                                    <td>
+                                        <a href="/profile/{{ $user->id}}" class="btn btn-view-users"> Ver</a>
+                                    </td>
+                                    <td>
+                                        <a href="/profile/edited/{{ $user->id }}" class="btn btn-edit-users col"> Editar </a>
+                                    </td>
+                                    <td>
+                                        <form action="/profile/{{ $user->id}}" method="POST" >
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger delete-btn">
+                                                            Deletar
+                                                        </button>
+                                        </form>
+                                    </td>
+
+
+
                                 </tr>
-                                                        </tbody>
+
+                            </tbody>
+                            @endif
+                            @endforeach
+
+    
+        
+
+                            @if(count($users) == 0 && $search)
+                                <p>Não foi possível encontrar um usuário com o nome '{{ $search}}' <a href="/user"> Ver todos</a></p>
+                            @elseif(count($users) == 0)
+                                <p>Não há usuários cadastrados </p>
+                            @endif
                     </table>
+                    
                 </div>
+                
+                
+    @endcan
+                    
+            </div>
+    </div>
+             <div>
+                    {{ $users->appends([
+                        'search' => request()->get('search', '')
+                    ])->links() }}
+            </div>
+            
+</div>
+                </div>
+                
                 
             </div>
             
-            <div class="card-footer py-4">
-                
-                <nav class="d-flex justify-content-end" aria-label="...">
-                    
-                </nav>
-            </div>
-        </div>
-        <div class="alert alert-danger">
-            <span>
-              <b> </b> This is a PRO feature!</span>
-          </div>
-    </div>
-</div>
-                </div>
-
-                <footer class="footer">
-<div class="container-fluid">
-    <ul class="nav">
-        <li class="nav-item">
-            <a href="https://creative-tim.com" target="blank" class="nav-link">
-                Creative Tim
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="https://updivision.com" target="blank" class="nav-link">
-                Updivision
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                About Us
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                Blog
-            </a>
-        </li>
-    </ul>
-    <div class="copyright">
-        © 2020 made with <i class="tim-icons icon-heart-2"></i> by
-        <a href="https://creative-tim.com" target="_blank">Creative Tim</a> &amp;
-        <a href="https://updivision.com" target="_blank">Updivision</a> for a better web.
-    </div>
-</div>
-</footer>
-            </div>
         </div>
     <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
             @csrf

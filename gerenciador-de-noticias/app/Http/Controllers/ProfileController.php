@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -18,6 +20,15 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
+    public function edited($id){
+        
+        $user = User::findOrFail($id);
+
+        return view('profile.edited', ['user' => $user]);
+
+    }
+
+
     /**
      * Update the profile
      *
@@ -28,7 +39,18 @@ class ProfileController extends Controller
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        //return back()->withStatus(__('Usuário atualizado com sucesso!'));
+        return redirect('/user')->with('msg', 'Usuário atualizado com sucesso!');
+    }
+
+    public function up(Request $request)
+    {
+
+        $data = $request->all();
+
+        User::findOrFail($request->id)->update($data);
+
+        return redirect('/user')->with('msg', 'Usuário atualizado com sucesso!');
     }
 
     /**
@@ -43,4 +65,32 @@ class ProfileController extends Controller
 
         return back()->withPasswordStatus(__('Password successfully updated.'));
     }
+
+    public function destroy($id){
+        User::findOrFail($id)->delete();
+        return redirect('/index')->with('msg', 'Usuário excluído com sucesso!');
+    }
+
+    public function show($id){
+        $user = User::findOrFail($id);
+        return view('profile.show', ['user' => $user]);
+    }
+
+    public function index(){
+        $search = request('search');
+
+        
+            $users = User::where([
+                ['name', 'like', '%'.$search.'%']
+            ])->paginate(3);
+           
+        
+
+        return view('users.index', ['users' => $users, 'search' => $search]);
+    }
+
+
+    
+
+
 }
