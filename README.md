@@ -1,5 +1,7 @@
 # GERENCIADOR DE NOTÍCIAS 
 
+## Usuario Administrador: Email: admin@white.com    Senha: secret 
+
 # COMO USAR: 
 
 ### Depois de baixar o repositório em seu computador e abrir em seu editor de código (Usei: Visual Studio Code), vá no arquivo .env e defina a configuração do banco de dados que irá utilizar:
