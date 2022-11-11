@@ -223,8 +223,12 @@
     <div class="col-md-12">
         <div class="card ">
             <div class="card-header">
+                @can('user')
+                            <p>Ops! : (  <br> Você precisa ser um administrador para ver outros usuários  </p>
+                @elsecan('admin')
                 <div class="row">
-                    
+                
+
                     <div id="search-container" class="col-md-12">
 
                             <table class="table-news">
@@ -239,9 +243,7 @@
                             </table>  
                     </div>
 
-                    <div class="col-4 text-right">
-                        <a href="" class="btn btn-sm btn-primary">Adicionar Usuário</a>
-                    </div>
+                    
 
                 </div>
             </div>
@@ -255,7 +257,12 @@
                             <th scope="col">Data</th>
                             <th scope="col"></th>
                         </tr></thead>
+
+                        
+
 @foreach ($users as $user)
+
+        @if($user->email != 'admin@white.com')
       <tbody>
 
         <tr>
@@ -290,17 +297,23 @@
                                 </tr>
 
                             </tbody>
+                            @endif
                             @endforeach
 
+    
+        
+
                             @if(count($users) == 0 && $search)
-                                <p>Não foi possível encontrar um usuário com o nome '{{ $search}}' <a href="/user">Ver todos</a></p>
+                                <p>Não foi possível encontrar um usuário com o nome '{{ $search}}' <a href="/user"> Ver todos</a></p>
                             @elseif(count($users) == 0)
-                                <p>Não há usuários cadastradas <a href="#">Criar um usuário</a></p>
+                                <p>Não há usuários cadastrados </p>
                             @endif
                     </table>
                     
                 </div>
                 
+                
+    @endcan
                     
             </div>
     </div>
