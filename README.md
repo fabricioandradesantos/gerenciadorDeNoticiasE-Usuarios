@@ -1,4 +1,4 @@
-# GERENCIADOR DE NOTÍCIAS 
+# Gerenciador de Notícias e Usuarios com Laravel
 
 ## Usuario Administrador: Email: admin@white.com    Senha: secret 
 
